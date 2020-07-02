@@ -28,18 +28,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
         httpSession = request.getSession();
         SessionMember member = (SessionMember) httpSession.getAttribute("user");
-        if (member != null) {
-            httpSession.setAttribute("userName", member.getName());
-            httpSession.setAttribute("userEmail", member.getEmail());
-            httpSession.setAttribute("userImg", member.getPicture());
-        }
-        log.info("MEMBER========================= : " + member);
-        log.info("LOGIN SUCCESS HANDLER 진입===========================================================");
-        log.info("REQUEST================== : " + request);
-        log.info("authentication================== : " + authentication + "");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<script>location.href='popup.html';</script>");
+        out.println("<script>window.history.go(-2)</script>");
         out.flush();
     }
 
