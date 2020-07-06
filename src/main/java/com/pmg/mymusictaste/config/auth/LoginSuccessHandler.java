@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 import com.pmg.mymusictaste.config.auth.dto.SessionMember;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.web.DefaultRedirectStrategy;
+import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
@@ -21,16 +23,21 @@ import lombok.extern.slf4j.Slf4j;
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
     private HttpSession httpSession;
+    private RedirectStrategy redirectStratgy = new DefaultRedirectStrategy();
+
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
             Authentication authentication) throws IOException, ServletException {
 
+        log.info("LOGIN SUCCESS HANDLER");
+
         httpSession = request.getSession();
+        // redirectStratgy.sendRedirect(request, response, "popup.html");
         SessionMember member = (SessionMember) httpSession.getAttribute("user");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<script>window.history.go(-2)</script>");
+        out.println("<script>chrome.windows.remove(-1, ()=>{log.info('close')});</script>");
         out.flush();
     }
 
