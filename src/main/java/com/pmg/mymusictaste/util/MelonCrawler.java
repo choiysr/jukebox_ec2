@@ -12,6 +12,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class MelonCrawler {
 
   private Document doc;
@@ -25,8 +28,9 @@ public class MelonCrawler {
     try {
       this.doc = Jsoup.connect(target.getUrl()).get();
       if (doc != null) {
-        getMelonChartList("tr.lst50");
-        getMelonChartList("tr.lst100");
+        getMelonChartList("tbody>tr");
+        // getMelonChartList("tr.lst50");
+        // getMelonChartList("tr.lst100");
       }
     } catch (IOException e) {
       e.printStackTrace();

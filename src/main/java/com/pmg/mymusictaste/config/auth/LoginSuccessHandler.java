@@ -32,12 +32,15 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
         log.info("LOGIN SUCCESS HANDLER");
 
-        httpSession = request.getSession();
+        // httpSession = request.getSession();
         // redirectStratgy.sendRedirect(request, response, "popup.html");
-        SessionMember member = (SessionMember) httpSession.getAttribute("user");
+        // SessionMember member = (SessionMember) httpSession.getAttribute("user");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<script>chrome.windows.remove(-1, ()=>{log.info('close')});</script>");
+        // out.println("<script>var windowpop=window.open('about:blank','_self'); windowpop.close();</script>");
+        // out.println("<script>window.open('', '_self', '');window.close();</script>");
+        // out.println("<script>chrome.windows.getCurrent(true,(window)=>{chrome.windows.remove(window.id)})</script>");
+        out.println("<script>chrome.windows.remove(-2)</script>");
         out.flush();
     }
 
