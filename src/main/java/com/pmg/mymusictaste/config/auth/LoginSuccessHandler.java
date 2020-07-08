@@ -37,10 +37,18 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         // SessionMember member = (SessionMember) httpSession.getAttribute("user");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        out.println("<script>window.opener.location.reload();window.close();</script>");
+        // out.println("<script>var windowpop=window.open('about:blank','_self')</script>;<script>chrome.windows.remove(-2)</script>;");
         // out.println("<script>var windowpop=window.open('about:blank','_self'); windowpop.close();</script>");
         // out.println("<script>window.open('', '_self', '');window.close();</script>");
         // out.println("<script>chrome.windows.getCurrent(true,(window)=>{chrome.windows.remove(window.id)})</script>");
-        out.println("<script>chrome.windows.remove(-2)</script>");
+        // out.println("<script>chrome.windows.remove(-2)</script>");
+        // out.println("<script>function closeWindow(){ window.close(); } function openWindow(callback){ window.open('about:blank','_self'); setTimeout(() => { callback; }, 2000); } openWindow(closeWindow());</script>");
+        
+    
+        // out.println("<script>function closeWindow() { window.close(); } function openWindow(callback) { window.open('about:blank','_self'); setTimeout(() => { callback(); }, 1000); } document.addEventListener('DOMContentLoaded', function(){ openWindow(closeWindow); }); </script>");
+
+        // out.println("<script>chrome.runtime.sendMessage('pmpmnfebjlopdkeffgjpgjkgjnhggagd',{ message: 'hi' }, (response) => {console.log(response.message);});</script>");
         out.flush();
     }
 
