@@ -29,9 +29,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
             Authentication authentication) throws IOException, ServletException {
-
         log.info("LOGIN SUCCESS HANDLER");
-
         // httpSession = request.getSession();
         // redirectStratgy.sendRedirect(request, response, "popup.html");
         // SessionMember member = (SessionMember) httpSession.getAttribute("user");
@@ -44,10 +42,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         // out.println("<script>chrome.windows.getCurrent(true,(window)=>{chrome.windows.remove(window.id)})</script>");
         // out.println("<script>chrome.windows.remove(-2)</script>");
         // out.println("<script>function closeWindow(){ window.close(); } function openWindow(callback){ window.open('about:blank','_self'); setTimeout(() => { callback; }, 2000); } openWindow(closeWindow());</script>");
-        
-    
         // out.println("<script>function closeWindow() { window.close(); } function openWindow(callback) { window.open('about:blank','_self'); setTimeout(() => { callback(); }, 1000); } document.addEventListener('DOMContentLoaded', function(){ openWindow(closeWindow); }); </script>");
-
         // out.println("<script>chrome.runtime.sendMessage('pmpmnfebjlopdkeffgjpgjkgjnhggagd',{ message: 'hi' }, (response) => {console.log(response.message);});</script>");
         out.flush();
     }
