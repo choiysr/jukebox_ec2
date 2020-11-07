@@ -25,8 +25,8 @@ public class MelonCrawler {
     try {
       this.doc = Jsoup.connect(target.getUrl()).get();
       if (doc != null) {
-        getMelonChartList("tr.lst50");
-        getMelonChartList("tr.lst100");
+        // 클래스 없어짐. 확인하고 수정하기 
+        getMelonChartList("");
       }
     } catch (IOException e) {
       e.printStackTrace();
@@ -35,7 +35,8 @@ public class MelonCrawler {
   }
 
   private void getMelonChartList(String className) {
-    this.elements = doc.select(className);
+    // 여기 수정함 
+    this.elements = doc.select("tbody > tr");
       for (Element el : elements) {
         // 가수 여러명인지 체크
         Elements singers = el.select("div.rank02").select("a");

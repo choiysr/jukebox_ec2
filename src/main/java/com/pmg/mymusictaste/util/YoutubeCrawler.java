@@ -41,6 +41,7 @@ public class YoutubeCrawler {
     }
 
     public List<SongInfo> crawl(List<SongInfo> songList) {
+        System.out.println(songList);
         String targetURL = BASE_URL+songList.get(0).getTitle()+" "+songList.get(0).getSinger()+" official";
         driver.get(targetURL);
         songList.get(0).setYoutubeId(getVideoId(driver.findElements(By.id("video-title"))));
