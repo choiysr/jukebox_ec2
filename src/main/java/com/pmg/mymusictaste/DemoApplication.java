@@ -1,8 +1,6 @@
 package com.pmg.mymusictaste;
 
-import com.pmg.mymusictaste.Scheduler.AutoCrawl;
 import com.pmg.mymusictaste.service.SongService;
-import com.pmg.mymusictaste.util.MelonTarget;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
