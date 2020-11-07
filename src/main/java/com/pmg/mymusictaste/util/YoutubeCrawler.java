@@ -25,7 +25,7 @@ public class YoutubeCrawler {
         System.setProperty(webDriverID, webDriverPath);
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
-        this.driver = new ChromeDriver();
+        this.driver = new ChromeDriver(options);
     }
 
     public static YoutubeCrawler getChrome() {
