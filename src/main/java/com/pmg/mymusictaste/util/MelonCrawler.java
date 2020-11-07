@@ -12,6 +12,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class MelonCrawler {
 
   private Document doc;
@@ -25,8 +28,14 @@ public class MelonCrawler {
     try {
       this.doc = Jsoup.connect(target.getUrl()).get();
       if (doc != null) {
+<<<<<<< HEAD
         // 클래스 없어짐. 확인하고 수정하기 
         getMelonChartList("");
+=======
+        getMelonChartList("tbody>tr");
+        // getMelonChartList("tr.lst50");
+        // getMelonChartList("tr.lst100");
+>>>>>>> 065234e3d012c588d30162d4365f7d79812401f1
       }
     } catch (IOException e) {
       e.printStackTrace();
