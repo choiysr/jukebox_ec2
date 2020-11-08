@@ -37,7 +37,7 @@ public class YoutubeCrawler {
     }
 
     private void closeWebDriver() {
-        driver.close();
+        driver.quit();
     }
 
     public List<SongInfo> crawl(List<SongInfo> songList) {

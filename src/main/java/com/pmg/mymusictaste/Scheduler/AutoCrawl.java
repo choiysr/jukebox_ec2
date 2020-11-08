@@ -34,7 +34,7 @@ public class AutoCrawl {
         return SongInfo.toSongList(targetList);
     }
 
-    // 1시간마다 실행
+    // 1시간마다 실행(5초)
     @Scheduled(cron = "5 0 0-23 * * *")
     public void crawlRealTime() {
         List<Song> list = startCrawling(MelonTarget.REALTIME);
@@ -42,15 +42,15 @@ public class AutoCrawl {
         sServ.saveSongList(list);
     }
 
-    // 매일 자정(5초)에 실행
-    @Scheduled(cron = "5 0 0 * * ?")
+    // 매일 자정 30분 5초에 실행
+    @Scheduled(cron = "5 30 0 * * ?")
     public void crawlDaily() {
         List<Song> list = startCrawling(MelonTarget.DAILY);
         sServ.deleteByType(MelonTarget.DAILY);
         sServ.saveSongList(list);
     }
 
-    // 매주 월요일 자정(5초)에 실행
+    // 매주 월요일 자정 15분 5초에 실행
     @Scheduled(cron = "5 0 0 ? * 1")
     public void crawlWeekly() {
         List<Song> list = startCrawling(MelonTarget.WEEKLY);
@@ -58,7 +58,7 @@ public class AutoCrawl {
         sServ.saveSongList(list);
     }
 
-    // 매달 1일 자정(5초)에 실행
+    // 매달 1일 자정 7분 5초에 실행
     @Scheduled(cron = "5 0 0 1 * *")
     public void crawlMonthly() {
         List<Song> list = startCrawling(MelonTarget.MONTHLY);
